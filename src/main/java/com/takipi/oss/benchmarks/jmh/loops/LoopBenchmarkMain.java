@@ -16,24 +16,26 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
+import org.openjdk.jmh.profile.GCProfiler;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 @State(Scope.Benchmark)
 public class LoopBenchmarkMain {
 	final int size = 100000;
 	List<Integer> integers = null;
 
-	public static void main(String[] args) {
-		LoopBenchmarkMain benchmark = new LoopBenchmarkMain();
-		benchmark.setup();
-		
-		System.out.println("iteratorMaxInteger max is: " + benchmark.iteratorMaxInteger());
-		System.out.println("forEachLoopMaxInteger max is: " + benchmark.forEachLoopMaxInteger());
-		System.out.println("forEachLambdaMaxInteger max is: " + benchmark.forEachLambdaMaxInteger());
-		System.out.println("forMaxInteger max is: " + benchmark.forMaxInteger());
-		System.out.println("forMax2Integer max is: " + benchmark.forMax2Integer());
-		System.out.println("parallelStreamMaxInteger max is: " + benchmark.parallelStreamMaxInteger());
-		System.out.println("streamMaxInteger max is: " + benchmark.streamMaxInteger());
-		System.out.println("lambdaMaxInteger max is: " + benchmark.lambdaMaxInteger());
+	public static void main(String[] args) throws RunnerException {
+		Options opt = new OptionsBuilder()
+			.include(LoopBenchmarkMain.class.getSimpleName())
+			.addProfiler(GCProfiler.class)
+			.addProfiler(FlightRecorderProfiler.class)
+			.detectJvmArgs()
+      			.build();
+
+    		new Runner(opt).run();
 	}
 	
 	@Setup
