@@ -31,7 +31,6 @@ public class LoopBenchmarkMain {
 		Options opt = new OptionsBuilder()
 			.include(LoopBenchmarkMain.class.getSimpleName())
 			.addProfiler(GCProfiler.class)
-			.addProfiler(FlightRecorderProfiler.class)
 			.detectJvmArgs()
       			.build();
 
