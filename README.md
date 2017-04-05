@@ -1,5 +1,11 @@
 # loops-jmh-playground with GC profiling enabled
 
+Software versions are the latest available at present (2017.04.05, YYYY.MM.DD). Also Oracle JDK - not OpenJDK. Also Linux OS.
+
+## JMH 1.18 (released 23 days ago)
+## VM version: JDK 1.8.0_121, VM 25.121-b13
+## VM invoker: /usr/lib/jvm/java-8-oracle/jre/bin/java
+
 The results summary:
 
 ```
