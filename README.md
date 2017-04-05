@@ -1,3 +1,5 @@
+# Please use the "fixes" branch
+
 # loops-jmh-playground
 
 Blog post about JMH benchmarking streams, forEach, etc: http://blog.takipi.com/benchmark-how-java-8-lambdas-and-streams-can-make-your-code-5-times-slower/
